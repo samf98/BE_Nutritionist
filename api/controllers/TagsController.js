@@ -60,9 +60,8 @@ let _list = async function(parameters) {
 			model: sails.models.foods,
 			as: 'foods'
 		}]*/
-	});
-	return tags;
-};
+		return tags;
+	};
 
 let _create = async function(parameters) {
 	let name = parameters.name;
