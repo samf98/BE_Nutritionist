@@ -80,6 +80,10 @@ let _list = async function(parameters) {
 		where.age = parameters.age;
 	}	
 
+	if (_.has(parameters, 'role')) {
+		where.role = parameters.role;
+	}
+
 	let users = await usersModel.findAll({
 		where: where,
 		include: [{
@@ -100,6 +104,7 @@ let _create = async function(parameters) {
 	let age = parameters.age;
 	let weight = parameters.weight;
 	let height = parameters.height;
+	let role = parameters.role;
 	let user = await usersModel.create({
 		name,
 		password,
@@ -109,6 +114,7 @@ let _create = async function(parameters) {
 		height,
 		gender,
 		age,
+		role,
 		
 	});
 
@@ -121,6 +127,7 @@ let _create = async function(parameters) {
 		height,
 		gender,
 		age,
+		role,
 	});
 
 	return user[0];

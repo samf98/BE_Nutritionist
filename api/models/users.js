@@ -32,6 +32,10 @@ module.exports = {
 			type: Sequelize.STRING,
 			allowNull: true
 		},
+		role: {
+			type: Sequelize.STRING,
+			allowNull: true
+		},
 	},
 	options: {
 		tableName: 'users'
