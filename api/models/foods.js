@@ -12,12 +12,16 @@ module.exports = {
 			allowNull: false
 		},
 		image: {
-			type: Sequelize.BLOB,
+			type: Sequelize.STRING,
 			allowNull: true
 		},
 		description: {
 			type: Sequelize.STRING,
-			allowNull: false
+			allowNull: true
+		},
+		nutritionalFacts: {
+			type: Sequelize.STRING,
+			allowNull: true
 		}
 	},
 	options: {
