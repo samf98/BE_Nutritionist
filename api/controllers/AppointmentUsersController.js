@@ -9,7 +9,7 @@ let _ = require('lodash');
 
 let appointmentUsersModel = sails.models.userAppointment;
 
-let _delete = async function(parameters) {
+let _delete = async function (parameters) {
 	let where = {};
 
 	if (_.has(parameters, 'id')) {
@@ -26,22 +26,23 @@ let _delete = async function(parameters) {
 	return userAppointment;
 };
 
-let _update = async function(parameters) {
+let _update = async function (parameters) {
 	let where = {};
 	if (_.has(parameters, 'id')) {
 		where.id = parameters.id;
 		delete parameters.id;
 	}
 
-	let userAppointment = await appointmentUsersModel.update({ ...parameters
+	let userAppointment = await appointmentUsersModel.update({
+		...parameters
 	}, {
-		where: where
-	});
+			where: where
+		});
 	return userAppointment;
 };
 
 
-let _list = async function(parameters) {
+let _list = async function (parameters) {
 	let where = {};
 	if (_.has(parameters, 'userId')) {
 		where.userId = parameters.userId;
@@ -50,7 +51,7 @@ let _list = async function(parameters) {
 	if (_.has(parameters, 'id')) {
 		where.id = parameters.id;
 	}
-    if (_.has(parameters, 'appointmentID')) {
+	if (_.has(parameters, 'appointmentID')) {
 		where.appointmentID = parameters.appointmentID;
 	}
 
@@ -62,33 +63,33 @@ let _list = async function(parameters) {
 };
 
 
-let _create = async function(parameters) {
-	let userId = parameters.userId;
-	let appointmentID = parameters.appointmentID;
+let _create = async function (parameters) {
+	let Patient_ID = parameters.userId;
+	let Nutritionist_ID = parameters.appointmentID;
 	let appointment = await appointmentUsersModel.create({
-		userId,
-		appointmentID
+		Patient_ID,
+		Nutritionist_ID
 	});
 
 	return appointment;
 };
 
 module.exports = {
-	list: async function(request, response) {
+	list: async function (request, response) {
 		let userAppointment = await _list(request.query);
 		response.json(userAppointment);
 	},
-	create: function(request, response) {
+	create: function (request, response) {
 		let userAppointment = _create(request.body);
 		response.json({
 			created: true
 		});
 	},
-	delete: async function(request, response) {
+	delete: async function (request, response) {
 		let userAppointment = await _delete(request.body);
 		response.json(userAppointment);
 	},
-	update: async function(request, response) {
+	update: async function (request, response) {
 		let userAppointment = _update(request.body);
 		response.json({
 			updated: true

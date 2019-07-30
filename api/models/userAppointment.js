@@ -1,11 +1,11 @@
 module.exports = {
 	attributes: {
-		PatientId: {
+		Patient_ID: {
 			type: Sequelize.INTEGER,
 			unique: 'user_appointments',
 			allowNull: false
 		},
-		appointmentsID: {
+		Nutritionist_ID: {
 			type: Sequelize.INTEGER,
 			unique: 'user_appointments',
 			allowNull: false
