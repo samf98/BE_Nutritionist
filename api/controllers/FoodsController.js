@@ -28,6 +28,10 @@ let _list = async function(parameters) {
 		where.description = parameters.description;
 	}
 
+	if (_.has(parameters, 'nutritionalFacts')) {
+		where.description = parameters.description;
+	}
+
 	let foods = await foodsModel.findAll({
 		where: where,
 		include: [{
@@ -46,13 +50,15 @@ let _create = async function(parameters) {
 	let food = await foodsModel.create({
 		name,
 		image,
-		description
+		description,
+		nutritionalFacts
 	});
 
 	food = await _list({
 		name,
 		image,
-		description
+		description,
+		nutritionalFacts
 	});
 
 	return food[0];
