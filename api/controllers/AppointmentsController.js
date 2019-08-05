@@ -50,6 +50,10 @@ let _list = async function(parameters) {
 		where.time = parameters.time;
 	}
 
+	if (_.has(parameters, 'patientName')) {
+		where.patientData = parameters.patientData;
+	}
+
 	if (_.has(parameters, 'patientData')) {
 		where.patientData = parameters.patientData;
 	}
@@ -64,11 +68,13 @@ let _create = async function(parameters) {
 	let date = parameters.date;
 	let time = parameters.time;
 	let patientId = parameters.patientId;
+	let patientName = parameters.patientName;
 	let patientData = parameters.patientData;
 	let appointments = await appointmentsModel.create({
 		date,
 		time,
 		patientId,
+		patientName,
 		patientData
 	});
 
