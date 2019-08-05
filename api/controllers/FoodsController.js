@@ -47,6 +47,7 @@ let _create = async function(parameters) {
 	let name = parameters.name;
 	let image = parameters.image;
 	let description = parameters.description;
+	let nutritionalFacts = parameters.nutritionalFacts;
 	let food = await foodsModel.create({
 		name,
 		image,

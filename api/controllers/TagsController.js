@@ -54,14 +54,15 @@ let _list = async function(parameters) {
 		where.description = parameters.description;
 	}
 
-	/*let tags = await tagsModel.findAll({
+	let tags = await tagsModel.findAll({
 		where: where,
 		include: [{
 			model: sails.models.foods,
 			as: 'foods'
-		}]*/
-		return tags;
-	};
+		}]
+	});
+	return tags;
+};
 
 let _create = async function(parameters) {
 	let name = parameters.name;
@@ -69,11 +70,6 @@ let _create = async function(parameters) {
 	let tags = await tagsModel.create({
 		name,
 		description
-	});
-
-	tag = await _list({
-		name,
-		image
 	});
 
 	return tags;

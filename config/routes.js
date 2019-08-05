@@ -66,6 +66,10 @@ module.exports.routes = {
   'DELETE /appointments': { action: 'appointments/delete' },
   'PATCH /appointments': { action: 'appointments/update' },
 
+  'GET /userAppointments': { action: 'usersAppointments/list' },
+  'POST /userAppointments': { action: 'usersAppointments/create' },
+  'DELETE /userAppointments': { action: 'usersAppointments/delete' },
+  'PATCH /userAppointments': { action: 'usersAppointments/update' },
   /*
   
     '/': { view: 'pages/homepage' },
