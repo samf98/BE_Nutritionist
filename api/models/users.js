@@ -36,6 +36,10 @@ module.exports = {
 			type: Sequelize.STRING,
 			allowNull: true
 		},
+		goal: {
+			type: Sequelize.STRING,
+			allowNull: true
+		},
 	},
 	options: {
 		tableName: 'users'
