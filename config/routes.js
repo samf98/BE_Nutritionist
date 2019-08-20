@@ -70,6 +70,11 @@ module.exports.routes = {
   'POST /userAppointments': { action: 'usersAppointments/create' },
   'DELETE /userAppointments': { action: 'usersAppointments/delete' },
   'PATCH /userAppointments': { action: 'usersAppointments/update' },
+
+  'GET /NutritionFacts': { action: 'NutritionFacts/list' },
+  'POST /NutritionFacts': { action: 'NutritionFacts/create' },
+  'DELETE /NutritionFacts': { action: 'NutritionFacts/delete' },
+  'PATCH /NutritionFacts': { action: 'NutritionFacts/update' },
   /*
   
     '/': { view: 'pages/homepage' },

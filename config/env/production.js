@@ -51,7 +51,7 @@ module.exports = {
             database: 'nutritionist',
             host: 'localhost',
             user: 'postgres',
-            password: '',
+            password: 'Pepethefrog1',
             port: 5432,
             pool: false,
             ssl: false
