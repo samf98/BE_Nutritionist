@@ -33,7 +33,8 @@ module.exports = {
             allowNull: false
         },
         foodId:{
-            type: Sequelize.STRING,
+            type: Sequelize.INTEGER,
+            unique: 'nutritionfacts',
             allowNull: false
         },
 	},

@@ -75,6 +75,11 @@ module.exports.routes = {
   'POST /NutritionFacts': { action: 'NutritionFacts/create' },
   'DELETE /NutritionFacts': { action: 'NutritionFacts/delete' },
   'PATCH /NutritionFacts': { action: 'NutritionFacts/update' },
+
+  'GET /Goals': { action: 'Goals/list' },
+  'POST /Goals': { action: 'Goals/create' },
+  'DELETE /Goals': { action: 'Goals/delete' },
+  'PATCH /Goals': { action: 'Goals/update' },
   /*
   
     '/': { view: 'pages/homepage' },

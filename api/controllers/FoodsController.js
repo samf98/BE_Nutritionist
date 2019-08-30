@@ -28,8 +28,36 @@ let _list = async function(parameters) {
 		where.description = parameters.description;
 	}
 
-	if (_.has(parameters, 'nutritionalFacts')) {
-		where.description = parameters.description;
+	if (_.has(parameters, 'calories')) {
+		where.calories = parameters.calories;
+	}
+
+	if (_.has(parameters, 'carbs')) {
+		where.carbs = parameters.carbs;
+	}
+
+	if (_.has(parameters, 'proteins')) {
+		where.proteins = parameters.proteins;
+	}
+
+	if (_.has(parameters, 'fat')) {
+		where.fat = parameters.fat;
+	}
+
+	if (_.has(parameters, 'sugar')) {
+		where.sugar = parameters.sugar;
+	}
+
+	if (_.has(parameters, 'sodium')) {
+		where.sodium = parameters.sodium;
+	}
+
+	if (_.has(parameters, 'transfat')) {
+		where.transfat = parameters.transfat;
+	}	
+
+	if (_.has(parameters, 'fiber')) {
+		where.fiber = parameters.fiber;
 	}
 
 	let foods = await foodsModel.findAll({
@@ -47,19 +75,40 @@ let _create = async function(parameters) {
 	let name = parameters.name;
 	let image = parameters.image;
 	let description = parameters.description;
-	let nutritionalFacts = parameters.nutritionalFacts;
+	let calories = parameters.calories;
+	let carbs = parameters.carbs;
+	let proteins = parameters.proteins;
+	let fat = parameters.fat;
+	let sugar = parameters.sugar;
+	let sodium = parameters.sodium;
+	let transfat = parameters.transfat;
+	let fiber = parameters.fiber;
 	let food = await foodsModel.create({
 		name,
 		image,
 		description,
-		nutritionalFacts
+		calories,
+		carbs,
+		proteins,
+		fat,
+		sugar,
+		sodium,
+		transfat,
+		fiber
 	});
 
 	food = await _list({
 		name,
 		image,
 		description,
-		nutritionalFacts
+		calories,
+		carbs,
+		proteins,
+		fat,
+		sugar,
+		sodium,
+		transfat,
+		fiber
 	});
 
 	return food[0];

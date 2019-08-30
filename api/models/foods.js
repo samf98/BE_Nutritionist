@@ -19,10 +19,38 @@ module.exports = {
 			type: Sequelize.STRING,
 			allowNull: true
 		},
-		nutritionalFacts: {
-			type: Sequelize.STRING,
-			allowNull: true
-		}
+		calories: {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        carbs:{ 
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        proteins: {
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        fat:{ 
+            type: Sequelize.STRING,
+            allowNull: true
+        }, 
+        sugar:{ 
+            type: Sequelize.STRING,
+            allowNull: true
+        }, 
+        sodium:{
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        transfat:{
+            type: Sequelize.STRING,
+            allowNull: true
+        },
+        fiber:{
+            type: Sequelize.STRING,
+            allowNull: true
+        }
 	},
 	options: {
 		tableName: 'foods'
