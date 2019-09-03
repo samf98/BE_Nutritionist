@@ -80,6 +80,11 @@ module.exports.routes = {
   'POST /Goals': { action: 'Goals/create' },
   'DELETE /Goals': { action: 'Goals/delete' },
   'PATCH /Goals': { action: 'Goals/update' },
+
+  'GET /usersTags': { action: 'usersTags/list' },
+  'POST /usersTags': { action: 'usersTags/create' },
+  'DELETE /usersTags': { action: 'usersTags/delete' },
+  'PATCH /usersTags': { action: 'usersTags/update' },
   /*
   
     '/': { view: 'pages/homepage' },

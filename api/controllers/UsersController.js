@@ -93,7 +93,12 @@ let _list = async function(parameters) {
 		include: [{
 			model: sails.models.roles,
 			as: 'roles'
-		}]
+		},
+		{
+			model: sails.models.tags,
+			as: 'tags'
+		}
+	]
 	});
 	return users;
 };

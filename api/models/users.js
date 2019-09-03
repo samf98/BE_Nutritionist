@@ -56,7 +56,17 @@ module.exports = {
 				unique: false
 			}
 		});
-
+		sails.models.users.belongsToMany(sails.models.tags, {
+			through: {
+				model: sails.models.usertag,
+				unique: false
+			},
+			as: 'tags',
+			foreignKey: {
+				name: 'userId',
+				unique: false
+			}
+		});
 		sails.models.users.hasMany(sails.models.entries, {
 			as: 'entries',
 			foreignKey: {

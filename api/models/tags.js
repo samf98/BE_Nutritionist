@@ -1,6 +1,6 @@
 module.exports = {
 	attributes: {
-        name: {
+		name: {
 			type: Sequelize.STRING,
 			allowNull: false
 		},
@@ -8,20 +8,31 @@ module.exports = {
 			type: Sequelize.STRING
 		}
 	},
-	associations: function() {
+	associations: function () {
 		sails.models.tags.belongsToMany(sails.models.foods, {
 			through: {
-			    model: sails.models.foodtag,
-			    unique: false
+				model: sails.models.foodtag,
+				unique: false
 			},
 			as: 'foods',
 			foreignKey: {
 				name: 'tagId',
 				unique: false
 			}
-		}); 
+		});
+		sails.models.tags.belongsToMany(sails.models.users, {
+			through: {
+				model: sails.models.usertag,
+				unique: false
+			},
+			as: 'users',
+			foreignKey: {
+				name: 'tagId',
+				unique: false
+			}
+		});
 	},
-	options: { 
+	options: {
 		tableName: 'tags'
 	}
 };
