@@ -2,8 +2,7 @@ module.exports = {
 	attributes: {
 		userId: {
 			type: Sequelize.INTEGER,
-			allowNull: false,
-			primaryKey: true
+			allowNull: false
 		},
 		date: {
 			type: Sequelize.STRING,
