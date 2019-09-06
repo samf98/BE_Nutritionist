@@ -1,7 +1,7 @@
 module.exports = {
 	attributes: {
 		userId: {
-			type: Sequelize.INTEGER,
+			type: Sequelize.STRING,
 			allowNull: false
 		},
 		date: {
@@ -9,19 +9,19 @@ module.exports = {
 			allowNull: false
 		},
 		water: {
-			type: Sequelize.DOUBLE,
+			type: Sequelize.STRING,
 			allowNull: false
 		},
 		steps: {
-			type: Sequelize.INTEGER,
+			type: Sequelize.STRING,
 			allowNull: false
 		},
 		weight: {
-			type: Sequelize.DOUBLE,
+			type: Sequelize.STRING,
 			allowNull: false
 		},
 		hours_of_sleep: {
-			type: Sequelize.DOUBLE,
+			type: Sequelize.STRING,
 			allowNull: false
 		}
 	},
