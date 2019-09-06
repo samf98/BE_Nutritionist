@@ -50,8 +50,8 @@ let _list = async function(parameters) {
 		where.time = parameters.time;
 	}
 
-	if (_.has(parameters, 'patientName')) {
-		where.patientData = parameters.patientData;
+	if (_.has(parameters, 'patientId')) {
+		where.patientId = parameters.patientId;
 	}
 
 	if (_.has(parameters, 'patientData')) {
