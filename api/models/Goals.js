@@ -1,7 +1,7 @@
 module.exports = {
 	attributes: {
         type: {
-			type: Sequelize.STRING,
+			type: Sequelize.INTEGER,
 			allowNull: false
 		},
 		goal: {
