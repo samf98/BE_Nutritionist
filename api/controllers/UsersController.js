@@ -84,20 +84,13 @@ let _list = async function(parameters) {
 		where.role = parameters.role;
 	}
 
-	if (_.has(parameters, 'goal')) {
-		where.goal = parameters.goal;
-	}
-
 	let users = await usersModel.findAll({
 		where: where,
-		include: [{
-			model: sails.models.roles,
-			as: 'roles'
-		},
+		include: [
 		{
 			model: sails.models.tags,
 			as: 'tags'
-		}
+		},
 	]
 	});
 	return users;
@@ -114,7 +107,6 @@ let _create = async function(parameters) {
 	let weight = parameters.weight;
 	let height = parameters.height;
 	let role = parameters.role;
-	let goal = parameters.goal;
 	let user = await usersModel.create({
 		name,
 		password,
@@ -125,7 +117,6 @@ let _create = async function(parameters) {
 		gender,
 		age,
 		role,
-		goal,
 		
 	});
 
@@ -139,7 +130,6 @@ let _create = async function(parameters) {
 		gender,
 		age,
 		role,
-		goal,
 	});
 
 	return user[0];

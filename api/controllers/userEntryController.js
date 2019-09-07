@@ -1,5 +1,5 @@
 /**
- * RolesController
+ * UsersTagsController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
@@ -7,7 +7,7 @@
 
 let _ = require('lodash');
 
-let rolesUsersModel = sails.models.userrole;
+let usersEntriesModel = sails.models.user_entry;
 
 let _delete = async function(parameters) {
 	let where = {};
@@ -20,10 +20,10 @@ let _delete = async function(parameters) {
 		where.userId = parameters.userId;
 	}
 
-	let usersRoles = await rolesUsersModel.destroy({
+	let usersEntries = await usersEntriesModel.destroy({
 		where: where
 	});
-	return usersRoles;
+	return usersEntries;
 };
 
 let _update = async function(parameters) {
@@ -33,11 +33,11 @@ let _update = async function(parameters) {
 		delete parameters.id;
 	}
 
-	let usersRoles = await rolesUsersModel.update({ ...parameters
+	let usersEntries = await usersEntriesModel.update({ ...parameters
 	}, {
 		where: where
 	});
-	return usersRoles;
+	return usersEntries;
 };
 
 
@@ -51,45 +51,45 @@ let _list = async function(parameters) {
 		where.id = parameters.id;
 	}
 
-	if (_.has(parameters, 'roleId')) {
-		where.roleId = parameters.roleId;
+	if (_.has(parameters, 'entryId')) {
+		where.entryId = parameters.entryId;
 	}
 
-	let usersRoles = await rolesUsersModel.findAll({
+	let usersEntries = await usersEntriesModel.findAll({
 		where: where
 	});
-	return usersRoles;
+	return usersEntries;
 };
 
 
 let _create = async function(parameters) {
 	let userId = parameters.userId;
-	let roleId = parameters.roleId;
-	let roles = await rolesUsersModel.create({
+	let entryId = parameters.tagId;
+	let entries = await usersEntriesModel.create({
 		userId,
-		roleId
+		entryId
 	});
 
-	return roles;
+	return entries;
 };
 
 module.exports = {
 	list: async function(request, response) {
-		let userRoles = await _list(request.query);
-		response.json(userRoles);
+		let userEntries = await _list(request.query);
+		response.json(userEntries);
 	},
 	create: function(request, response) {
-		let userRole = _create(request.body);
+		let userEntry = _create(request.body);
 		response.json({
 			created: true
 		});
 	},
 	delete: async function(request, response) {
-		let userRoles = await _delete(request.body);
-		response.json(userRoles);
+		let userEntries = await _delete(request.body);
+		response.json(userEntries);
 	},
 	update: async function(request, response) {
-		let userRole = _update(request.body);
+		let userEntry = _update(request.body);
 		response.json({
 			updated: true
 		});

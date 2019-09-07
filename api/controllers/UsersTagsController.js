@@ -7,7 +7,7 @@
 
 let _ = require('lodash');
 
-let usersTagsModel = sails.models.usertag;
+let usersTagsModel = sails.models.user_tag;
 
 let _delete = async function(parameters) {
 	let where = {};

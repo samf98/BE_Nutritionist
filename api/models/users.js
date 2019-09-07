@@ -36,26 +36,11 @@ module.exports = {
 			type: Sequelize.STRING,
 			allowNull: true
 		},
-		goal: {
-			type: Sequelize.STRING,
-			allowNull: true
-		},
 	},
 	options: {
 		tableName: 'users'
 	},
 	associations: function () {
-		sails.models.users.belongsToMany(sails.models.roles, {
-			through: {
-				model: sails.models.userrole,
-				unique: false
-			},
-			as: 'roles',
-			foreignKey: {
-				name: 'userId',
-				unique: false
-			}
-		});
 		sails.models.users.belongsToMany(sails.models.tags, {
 			through: {
 				model: sails.models.usertag,
@@ -67,21 +52,12 @@ module.exports = {
 				unique: false
 			}
 		});
-		sails.models.users.hasMany(sails.models.entries, {
+		sails.models.users.belongsToMany(sails.models.entries, {
 			as: 'entries',
-			foreignKey: {
-				name: 'userId',
-				unique: false
-			}
-		});
-
-
-		sails.models.users.belongsToMany(sails.models.categories, {
 			through: {
-				model: sails.models.usercategories,
+				model: sails.models.userentry,
 				unique: false
 			},
-			as: 'categories',
 			foreignKey: {
 				name: 'userId',
 				unique: false

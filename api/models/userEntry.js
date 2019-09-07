@@ -2,16 +2,16 @@ module.exports = {
 	attributes: {
 		userId: {
 			type: Sequelize.INTEGER,
-			unique: 'user_role',
+			unique: 'user_entry',
 			allowNull: false
 		},
-		roleId: {
+		entryId: {
 			type: Sequelize.INTEGER,
-			unique: 'user_role',
+			unique: 'user_entry',
 			allowNull: false
 		}
 	},
 	options: {
-		tableName: 'user_role'
+		tableName: 'user_entry'
 	}
 };

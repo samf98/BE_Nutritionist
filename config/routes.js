@@ -85,6 +85,12 @@ module.exports.routes = {
   'POST /usersTags': { action: 'usersTags/create' },
   'DELETE /usersTags': { action: 'usersTags/delete' },
   'PATCH /usersTags': { action: 'usersTags/update' },
+
+  'GET /usersEntries': { action: 'userEntries/list' },
+  'POST /usersEntries': { action: 'usersEntries/create' },
+  'DELETE /usersEntries': { action: 'usersEntries/delete' },
+  'PATCH /usersEntries': { action: 'usersEntries/update' },
+
   /*
   
     '/': { view: 'pages/homepage' },
