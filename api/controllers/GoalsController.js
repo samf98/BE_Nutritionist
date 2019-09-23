@@ -1,13 +1,13 @@
 /**
- * UsersTagsController
+ * GoalsController
  *
  * @description :: Server-side actions for handling incoming requests.
  * @help        :: See https://sailsjs.com/docs/concepts/actions
- */
+ */ 
 
 let _ = require('lodash');
 
-let usersTagsModel = sails.models.usertag;
+let goalsModel = sails.models.goals;
 
 let _delete = async function(parameters) {
 	let where = {};
@@ -16,14 +16,10 @@ let _delete = async function(parameters) {
 		where.id = parameters.id;
 	}
 
-	if (_.has(parameters, 'userId')) {
-		where.userId = parameters.userId;
-	}
-
-	let usersTags = await usersTagsModel.destroy({
+	let goals = await goalsModel.destroy({
 		where: where
 	});
-	return usersTags;
+	return goals;
 };
 
 let _update = async function(parameters) {
@@ -33,63 +29,68 @@ let _update = async function(parameters) {
 		delete parameters.id;
 	}
 
-	let usersTags = await usersTagsModel.update({ ...parameters
+	let goals = await goalsModel.update({ ...parameters
 	}, {
 		where: where
 	});
-	return usersTags;
+	return goals;
 };
 
-
 let _list = async function(parameters) {
-	let where = {};
+    let where = {};
+
+    if (_.has(parameters, 'id')) {
+		where.id = parameters.id;
+	}
+
+	if (_.has(parameters, 'type')) {
+		where.type = parameters.type;
+	}
+
+	if (_.has(parameters, 'goal')) {
+		where.goal = parameters.goal;
+    }
+
 	if (_.has(parameters, 'userId')) {
 		where.userId = parameters.userId;
 	}
 
-	if (_.has(parameters, 'id')) {
-		where.id = parameters.id;
-	}
-
-	if (_.has(parameters, 'tagId')) {
-		where.tagId = parameters.tagId;
-	}
-
-	let usersTags = await usersTagsModel.findAll({
+	let goals = await goalsModel.findAll({
 		where: where
 	});
-	return usersTags;
+	return goals;
 };
 
-
 let _create = async function(parameters) {
-	let userId = parameters.userId;
-	let tagId = parameters.tagId;
-	let tags = await usersTagsModel.create({
-		userId,
-		tagId
+	let type = parameters.type;
+    let goal = parameters.goal;
+    let userId = parameters.userId;
+	let goals = await goalsModel.create({
+		type,
+        goal,
+        userId
 	});
 
-	return tags;
+	return goals;
 };
 
 module.exports = {
 	list: async function(request, response) {
-		let userTags = await _list(request.query);
-		response.json(userTags);
+		let goals = await _list(request.query);
+		response.json(goals);
 	},
 	create: function(request, response) {
-		let userTag = _create(request.body);
+		let goal = _create(request.body);
 		response.json({
 			created: true
 		});
 	},
 	delete: async function(request, response) {
-		let userTags = await _delete(request.body);
-		response.json(userTags);
+		let goals = await _delete(request.body);
+		response.json(goals);
 	},
 	update: async function(request, response) {
-		let userTag = _update(request.body);
+		let goals = _update(request.body);
 		response.json({
 			updated: true
 		});
@@ -98,4 +99,4 @@ module.exports = {
 	_list: _list,
 	_delete: _delete,
 	_update: _update
-};
+}; 
